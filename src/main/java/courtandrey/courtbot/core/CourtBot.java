@@ -6,7 +6,6 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-@Component
 public class CourtBot extends TelegramLongPollingBot {
     private final String BOT_USERNAME;
     private final String BOT_TOKEN;
