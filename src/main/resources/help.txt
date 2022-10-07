@@ -1,0 +1,1 @@
+This bot retrieves random court decision with the phrase you are interested. Use /show_decision command.
