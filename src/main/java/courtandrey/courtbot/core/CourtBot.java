@@ -1,6 +1,5 @@
 package courtandrey.courtbot.core;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -9,11 +8,14 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 @Component
 public class CourtBot extends TelegramLongPollingBot {
-    @Value("${bot.name}")
-    private String botUsername;
+    private final String BOT_USERNAME;
+    private final String BOT_TOKEN;
 
-    @Value("${bot.token}")
-    private String botToken;
+    public CourtBot(String BOT_USERNAME, String BOT_TOKEN) {
+        super();
+        this.BOT_USERNAME = BOT_USERNAME;
+        this.BOT_TOKEN = BOT_TOKEN;
+    }
 
     @Override
     public void onUpdateReceived(Update update) {
@@ -28,10 +30,10 @@ public class CourtBot extends TelegramLongPollingBot {
     }
 
     public String getBotUsername() {
-        return botUsername;
+        return BOT_USERNAME;
     }
 
     public String getBotToken() {
-        return botToken;
+        return BOT_TOKEN;
     }
 }
