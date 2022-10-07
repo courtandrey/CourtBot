@@ -31,6 +31,7 @@ class SessionController {
         String commandText = sessions.get(update.getMessage().getChatId()).commands.peekLast();
         if (commandText == null) return null;
         if (Command.isDialogCommand(commandText)) {
+            sessions.get(update.getMessage().getChatId()).commands.clear();
             return Command.parseCommand(commandText);
         }
         return null;
