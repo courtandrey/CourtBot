@@ -1,9 +1,11 @@
 package courtandrey.courtbot.task;
 
+import courtandrey.pravosudieapi.Pravosudie;
+
 import java.util.concurrent.Callable;
 
 public class GetRandomDecisionMatchingTextTask implements Callable<String> {
-    private String phrase;
+    private final String phrase;
 
     public GetRandomDecisionMatchingTextTask(String phrase) {
         this.phrase = phrase;
@@ -11,6 +13,9 @@ public class GetRandomDecisionMatchingTextTask implements Callable<String> {
 
     @Override
     public String call() {
-        return "Here's your decision!";
+        Pravosudie pravosudie = new Pravosudie();
+        return pravosudie.retrieveRandomDecisionMatchingText(phrase).getText();
     }
+
+
 }
