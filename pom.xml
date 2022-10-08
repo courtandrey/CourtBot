@@ -50,7 +50,7 @@
             <version>2.0.3</version>
         </dependency>
         <dependency>
-            <groupId>courtandrey</groupId>
+            <groupId>com.github.courtandrey</groupId>
             <artifactId>PravosudieAPI</artifactId>
             <version>1.0.3</version>
         </dependency>
