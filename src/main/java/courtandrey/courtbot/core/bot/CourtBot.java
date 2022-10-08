@@ -51,13 +51,13 @@ public class CourtBot extends TelegramLongPollingCommandBot {
     public void processNonCommandUpdate(Update update) {
         try {
             Command command = controller.checkDialog(update);
-            SendMessage info = new SendMessage();
-            info.setChatId(update.getMessage().getChatId());
-            info.setText("It may take some time...");
-            execute(info);
             SendMessage message = new SendMessage();
             message.setChatId(update.getMessage().getChatId());
             if (command != null) {
+                SendMessage info = new SendMessage();
+                info.setChatId(update.getMessage().getChatId());
+                info.setText("It may take some time...");
+                execute(info);
                 String response;
                 response = taskManager.execute(command, update.getMessage().getText());
                 List<SendMessage> messages = MessageSender.sendMessage(update.getMessage().getChatId(), response);
