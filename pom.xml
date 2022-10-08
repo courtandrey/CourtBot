@@ -52,7 +52,7 @@
         <dependency>
             <groupId>courtandrey</groupId>
             <artifactId>PravosudieAPI</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>1.0.2</version>
         </dependency>
     </dependencies>
     <build>

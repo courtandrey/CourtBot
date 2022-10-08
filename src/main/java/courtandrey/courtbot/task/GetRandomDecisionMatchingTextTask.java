@@ -13,8 +13,7 @@ public class GetRandomDecisionMatchingTextTask implements Callable<String> {
 
     @Override
     public String call() {
-        Pravosudie pravosudie = new Pravosudie();
-        return pravosudie.retrieveRandomDecisionMatchingText(phrase).getText();
+        return (new Pravosudie()).retrieveRandomDecisionMatchingText(phrase).getText();
     }
 
 
