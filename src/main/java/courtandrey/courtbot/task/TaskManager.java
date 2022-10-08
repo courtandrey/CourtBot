@@ -2,6 +2,7 @@ package courtandrey.courtbot.task;
 
 import courtandrey.courtbot.core.command.Command;
 import org.springframework.stereotype.Component;
+import pravosudieapi.Pravosudie;
 import pravosudieapi.PravosudieApiException;
 
 @Component

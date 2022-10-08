@@ -1,10 +1,12 @@
 package pravosudieapi;
 
 public class Pravosudie {
-    private final pravosudieapi.Scraper scraper;
+    private static pravosudieapi.Scraper scraper;
 
     public Pravosudie() {
-        scraper = new Scraper();
+        if (scraper == null) {
+            scraper = new Scraper();
+        }
     }
 
     public Decision retrieveRandomDecisionMatchingText(String text) throws PravosudieApiException {
