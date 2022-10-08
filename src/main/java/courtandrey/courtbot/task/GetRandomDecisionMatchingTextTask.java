@@ -1,6 +1,7 @@
 package courtandrey.courtbot.task;
 
 import courtandrey.pravosudieapi.Pravosudie;
+import courtandrey.pravosudieapi.PravosudieApiException;
 
 import java.util.concurrent.Callable;
 
@@ -12,7 +13,7 @@ public class GetRandomDecisionMatchingTextTask implements Callable<String> {
     }
 
     @Override
-    public String call() {
+    public String call() throws PravosudieApiException {
         return (new Pravosudie()).retrieveRandomDecisionMatchingText(phrase).getText();
     }
 

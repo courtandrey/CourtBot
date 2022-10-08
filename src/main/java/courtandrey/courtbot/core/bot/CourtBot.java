@@ -4,7 +4,9 @@ import courtandrey.courtbot.core.command.Command;
 import courtandrey.courtbot.core.command.HelpCommand;
 import courtandrey.courtbot.core.command.ShowDecisionCommand;
 import courtandrey.courtbot.core.command.StartCommand;
+import courtandrey.courtbot.core.service.MessageSender;
 import courtandrey.courtbot.task.TaskManager;
+import courtandrey.pravosudieapi.PravosudieApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -50,12 +52,23 @@ public class CourtBot extends TelegramLongPollingCommandBot {
     public void processNonCommandUpdate(Update update) {
         try {
             Command command = controller.checkDialog(update);
+            SendMessage info = new SendMessage();
+            info.setChatId(update.getMessage().getChatId());
+            info.setText("It may take some time...");
+            execute(info);
             SendMessage message = new SendMessage();
             message.setChatId(update.getMessage().getChatId());
             if (command != null) {
-                String response = taskManager.execute(command, update.getMessage().getText());
-                message.setText(response);
-                execute(message);
+                String response;
+                response = taskManager.execute(command, update.getMessage().getText());
+                List<SendMessage> messages = MessageSender.sendMessage(update.getMessage().getChatId(), response);
+                messages.forEach(x -> {
+                    try {
+                        execute(x);
+                    } catch (TelegramApiException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
                 return;
             }
             message.setText("This is not a supported command");

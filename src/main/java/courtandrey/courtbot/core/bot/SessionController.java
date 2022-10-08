@@ -23,6 +23,7 @@ class SessionController {
             }
             else {
                 sessions.put(update.getMessage().getChatId(), new Session());
+                addCommand(update);
             }
         }
     }
