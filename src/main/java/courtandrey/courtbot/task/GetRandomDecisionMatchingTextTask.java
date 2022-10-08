@@ -1,7 +1,7 @@
 package courtandrey.courtbot.task;
 
-import courtandrey.pravosudieapi.Pravosudie;
-import courtandrey.pravosudieapi.PravosudieApiException;
+import pravosudieapi.Pravosudie;
+import pravosudieapi.PravosudieApiException;
 
 import java.util.concurrent.Callable;
 

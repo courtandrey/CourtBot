@@ -1,8 +1,8 @@
 package courtandrey.courtbot.task;
 
 import courtandrey.courtbot.core.command.Command;
-import courtandrey.pravosudieapi.PravosudieApiException;
 import org.springframework.stereotype.Component;
+import pravosudieapi.PravosudieApiException;
 
 @Component
 public class TaskManager {
